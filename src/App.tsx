@@ -2,7 +2,6 @@ import React from "react";
 import Background from "./components/Background";
 import Footer from "./sections/Footer";
 import Navbar from "./sections/Navbar";
-import Wrapper from "./sections/Wrapper";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./scss/index.scss";
 import Search from "./pages/Search";
