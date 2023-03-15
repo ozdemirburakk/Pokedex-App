@@ -40,9 +40,10 @@ export const getPokemonData = createAsyncThunk(
             types,
           });
         }
-
-        console.log({ pokemonsData });
       }
-    } catch (error) {}
+      return pokemonsData;
+    } catch (error) {
+        console.log(error);
+    }
   }
 );
