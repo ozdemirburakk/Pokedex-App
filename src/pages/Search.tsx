@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { getInitialPokemonData } from "../app/reducers/getInitialPokemonData";
+import { getPokemonData } from "../app/reducers/getPokemonData";
 import Wrapper from "../sections/Wrapper";
 
 function Search() {
@@ -17,8 +18,9 @@ function Search() {
       const randomPokemonsId = clonedPokemons
         .sort(() => Math.random() - Math.random())
         .slice(0, 20);
+        dispatch(getPokemonData(randomPokemonsId));
     }
-  }, [allPokemon]);
+  }, [allPokemon,dispatch]);
 
   return <div>Search</div>;
 }
