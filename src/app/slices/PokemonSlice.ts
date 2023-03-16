@@ -29,7 +29,7 @@ export const PokemonSlice = createSlice({
     },
     removeFromCompare: (state, action) => {
       const index = state.compareQueue.findIndex(
-        (pokemon: generatedPokemonType) => pokemon.id === action.payload.id
+        (pokemon: generatedPokemonType) => pokemon.id !== action.payload.id
       );
       const queue = [...state.compareQueue];
       queue.splice(index, 1);

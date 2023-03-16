@@ -6,6 +6,8 @@ import {
 } from "../utils/Types";
 import { FaPlus } from "react-icons/fa";
 import { pokemonTypes } from "../utils/getPokemonTypes";
+import { useAppDispatch } from "../app/hooks";
+import { removeFromCompare } from "../app/slices/PokemonSlice";
 
 function CompareContainer({
   pokemon = undefined,
@@ -14,6 +16,7 @@ function CompareContainer({
   pokemon?: userPokemonsType;
   isEmpty?: boolean;
 }) {
+  const dispatch = useAppDispatch();
   const createStatsArray = (
     types: pokemonTypeInterface[],
     statType: pokemonStatType
@@ -33,59 +36,74 @@ function CompareContainer({
     return statsArray;
   };
   const getStats = () => {
-    const data = createStatsArray(pokemon?.types!, "strength");
     return (
       <>
-      <div className="pokemon-types">
-        <h4 className="pokemon-type-title" >Strength</h4>
-        <div className="pokemon-type-icons">
-          {
-            createStatsArray(pokemon?.types!, "strength").map((stat:{image:string})=>(
-              <div className="pokemon-type">
-                <img src={stat.image} alt="pokemon type" className="pokemon-type-image" />
-              </div>
-            ))
-          }
+        <div className="pokemon-types">
+          <h4 className="pokemon-type-title">Strength</h4>
+          <div className="pokemon-type-icons">
+            {createStatsArray(pokemon?.types!, "strength").map(
+              (stat: { image: string }) => (
+                <div className="pokemon-type">
+                  <img
+                    src={stat.image}
+                    alt="pokemon type"
+                    className="pokemon-type-image"
+                  />
+                </div>
+              )
+            )}
+          </div>
         </div>
-      </div>
-      <div className="pokemon-types">
-        <h4 className="pokemon-type-title" >Resistance</h4>
-        <div className="pokemon-type-icons">
-          {
-            createStatsArray(pokemon?.types!, "resistance").map((stat:{image:string})=>(
-              <div className="pokemon-type">
-                <img src={stat.image} alt="pokemon type" className="pokemon-type-image" />
-              </div>
-            ))
-          }
+        <div className="pokemon-types">
+          <h4 className="pokemon-type-title">Resistance</h4>
+          <div className="pokemon-type-icons">
+            {createStatsArray(pokemon?.types!, "resistance").map(
+              (stat: { image: string }) => (
+                <div className="pokemon-type">
+                  <img
+                    src={stat.image}
+                    alt="pokemon type"
+                    className="pokemon-type-image"
+                  />
+                </div>
+              )
+            )}
+          </div>
         </div>
-      </div>
-      <div className="pokemon-types">
-        <h4 className="pokemon-type-title" >Vulnerable</h4>
-        <div className="pokemon-type-icons">
-          {
-            createStatsArray(pokemon?.types!, "vulnerable").map((stat:{image:string})=>(
-              <div className="pokemon-type">
-                <img src={stat.image} alt="pokemon type" className="pokemon-type-image" />
-              </div>
-            ))
-          }
+        <div className="pokemon-types">
+          <h4 className="pokemon-type-title">Vulnerable</h4>
+          <div className="pokemon-type-icons">
+            {createStatsArray(pokemon?.types!, "vulnerable").map(
+              (stat: { image: string }) => (
+                <div className="pokemon-type">
+                  <img
+                    src={stat.image}
+                    alt="pokemon type"
+                    className="pokemon-type-image"
+                  />
+                </div>
+              )
+            )}
+          </div>
         </div>
-      </div>
-      <div className="pokemon-types">
-        <h4 className="pokemon-type-title" >Weakness</h4>
-        <div className="pokemon-type-icons">
-          {
-            createStatsArray(pokemon?.types!, "weakness").map((stat:{image:string})=>(
-              <div className="pokemon-type">
-                <img src={stat.image} alt="pokemon type" className="pokemon-type-image" />
-              </div>
-            ))
-          }
+        <div className="pokemon-types">
+          <h4 className="pokemon-type-title">Weakness</h4>
+          <div className="pokemon-type-icons">
+            {createStatsArray(pokemon?.types!, "weakness").map(
+              (stat: { image: string }) => (
+                <div className="pokemon-type">
+                  <img
+                    src={stat.image}
+                    alt="pokemon type"
+                    className="pokemon-type-image"
+                  />
+                </div>
+              )
+            )}
+          </div>
         </div>
-      </div>
       </>
-    )
+    );
   };
   return (
     <div className="compare-container">
@@ -132,7 +150,12 @@ function CompareContainer({
           <div className="compare-action-buttons">
             <button className="compare-btn">Add</button>
             <button className="compare-btn">View</button>
-            <button className="compare-btn">Remove</button>
+            <button
+              className="compare-btn"
+              onClick={() => dispatch(removeFromCompare({ id: pokemon.id }))}
+            >
+              Remove
+            </button>
           </div>
         </div>
       )}
