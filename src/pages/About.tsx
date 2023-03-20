@@ -7,7 +7,7 @@ function About() {
   return (
     <div className="profile">
       <img src={avatarImage} alt="avatar" className="profile-image" />
-      <h1 className="profile-text">Hi I am Burak Özdemir</h1>
+      <h1 className="profile-text">Hi I am Burak Özdemİr</h1>
       <h2 className="profile-text">The creator of this awesome pokedex</h2>
       <h4 className="profile-text">
         This project is created for my development{" "}
