@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { addDoc } from "firebase/firestore";
-
 import { getUserPokemons } from "./getUserPokemons";
 import { setToast } from "../slices/AppSlice";
 import { RootState } from "../store";
